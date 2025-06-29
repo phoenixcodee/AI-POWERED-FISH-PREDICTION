@@ -1,17 +1,13 @@
 import streamlit as st
 import numpy as np
-import tflite_runtime.interpreter as tflite  # ✅ Lightweight runtime
+import tflite_runtime.interpreter as tflite
 from PIL import Image
 import requests
 import json
 import streamlit.components.v1 as components
-import os
 
 # --- SETUP PAGE ---
 st.set_page_config(page_title="Fish Freshness Detector", page_icon="🐟", layout="centered")
-
-# --- OPTIONAL DEBUGGING ---
-st.write("📂 Files in app folder:", os.listdir())  # Comment this out later if not needed
 
 # --- FUNCTION TO LOAD LOTTIE ANIMATIONS ---
 def load_lottieurl(url):
@@ -38,7 +34,7 @@ def load_freshness_model():
 
 interpreter = load_freshness_model()
 
-# --- CLASS DATA ---
+# --- CLASS INFO ---
 class_names = ['Fresh', 'Moderately Fresh', 'Spoiled']
 lottie_map = {
     'Fresh': lottie_fresh,
@@ -106,7 +102,7 @@ if uploaded_file is not None:
 
         # --- RESULT SECTION ---
         st.markdown(f"## 🎯 Prediction: **{predicted_class}**")
-        st.markdown(f"**Confidence:** `{confidence*100:.2f}%`")
+        st.markdown(f"**Confidence:** `{confidence * 100:.2f}%`")
         st.markdown("📢 " + custom_messages[predicted_class])
 
         # --- DISPLAY LOTTIE ANIMATION ---
@@ -123,14 +119,15 @@ if uploaded_file is not None:
         # --- SHOW CLASS PROBABILITIES ---
         st.subheader("📊 Class Probabilities")
         for i, class_name in enumerate(class_names):
-            st.progress(prediction[0][i])
-            st.text(f"{class_name}: {prediction[0][i]*100:.2f}%")
+            progress_value = float(np.clip(prediction[0][i], 0.0, 1.0))  # ✅ Ensure safe float
+            st.progress(progress_value)
+            st.text(f"{class_name}: {progress_value * 100:.2f}%")
 
         # --- DOWNLOADABLE REPORT ---
         report_text = f"""Fish Freshness Prediction Report
 
 Prediction: {predicted_class}
-Confidence: {confidence*100:.2f}%
+Confidence: {confidence * 100:.2f}%
 
 {custom_messages[predicted_class]}
 """
