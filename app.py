@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite  # ✅ Use lightweight TFLite runtime
 from PIL import Image
 import requests
 import json
@@ -24,7 +24,7 @@ lottie_spoiled = load_lottieurl("https://lottie.host/49b79f94-2c7e-4685-a96c-5c9
 @st.cache_resource
 def load_freshness_model():
     try:
-        interpreter = tf.lite.Interpreter(model_path="model_float16.tflite")  # Update with correct path
+        interpreter = tflite.Interpreter(model_path="model_float16.tflite")  # ✅ Use tflite path
         interpreter.allocate_tensors()
         return interpreter
     except Exception as e:
