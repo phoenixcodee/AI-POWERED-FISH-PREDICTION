@@ -4,6 +4,8 @@ import tflite_runtime.interpreter as tflite  # ✅ Use lightweight TFLite runtim
 from PIL import Image
 import requests
 import json
+import streamlit.components.v1 as components
+
 
 # --- SETUP PAGE ---
 st.set_page_config(page_title="Fish Freshness Detector", page_icon="🐟", layout="centered")
@@ -105,7 +107,7 @@ if uploaded_file is not None:
         st.markdown("📢 " + custom_messages[predicted_class])
 
         # --- DISPLAY LOTTIE ANIMATION ---
-        st.components.v1.html(
+       components.html(
             f"""
             <lottie-player src="{requests.get(lottie_map[predicted_class]['v']).url}" 
                            background="transparent" speed="1" 
