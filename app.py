@@ -26,10 +26,9 @@ lottie_spoiled = load_lottieurl("https://lottie.host/49b79f94-2c7e-4685-a96c-5c9
 # --- LOAD MODEL FROM ZIP ---
 @st.cache_resource
 def load_freshness_model():
-    zip_path = "zip_path = "model.zip"
- # Replace with actual zip path
+    zip_path = "model.zip"  # ✅ Corrected path
     extract_dir = "temp_model_folder"
-    model_filename = "model.h5"  # Ensure this is the correct name inside zip
+    model_filename = "model.tflite"
 
     try:
         # Extract model only once
