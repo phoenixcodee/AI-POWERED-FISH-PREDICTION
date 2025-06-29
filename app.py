@@ -1,14 +1,17 @@
 import streamlit as st
 import numpy as np
-import tflite_runtime.interpreter as tflite  # ✅ Use lightweight TFLite runtime
+import tflite_runtime.interpreter as tflite  # ✅ Lightweight runtime
 from PIL import Image
 import requests
 import json
 import streamlit.components.v1 as components
-
+import os
 
 # --- SETUP PAGE ---
 st.set_page_config(page_title="Fish Freshness Detector", page_icon="🐟", layout="centered")
+
+# --- OPTIONAL DEBUGGING ---
+st.write("📂 Files in app folder:", os.listdir())  # Comment this out later if not needed
 
 # --- FUNCTION TO LOAD LOTTIE ANIMATIONS ---
 def load_lottieurl(url):
@@ -26,7 +29,7 @@ lottie_spoiled = load_lottieurl("https://lottie.host/49b79f94-2c7e-4685-a96c-5c9
 @st.cache_resource
 def load_freshness_model():
     try:
-        interpreter = tflite.Interpreter(model_path="model_float16.tflite")  # ✅ Use tflite path
+        interpreter = tflite.Interpreter(model_path="model_float16.tflite")
         interpreter.allocate_tensors()
         return interpreter
     except Exception as e:
@@ -107,14 +110,15 @@ if uploaded_file is not None:
         st.markdown("📢 " + custom_messages[predicted_class])
 
         # --- DISPLAY LOTTIE ANIMATION ---
-       components.html(
-            f"""
-            <lottie-player src="{requests.get(lottie_map[predicted_class]['v']).url}" 
-                           background="transparent" speed="1" 
-                           style="width: 300px; height: 300px;" loop autoplay>
-            </lottie-player>
-            """, height=300
-        )
+        if lottie_map[predicted_class]:
+            components.html(
+                f"""
+                <lottie-player src="{requests.get(lottie_map[predicted_class]['v']).url}" 
+                               background="transparent" speed="1" 
+                               style="width: 300px; height: 300px;" loop autoplay>
+                </lottie-player>
+                """, height=300
+            )
 
         # --- SHOW CLASS PROBABILITIES ---
         st.subheader("📊 Class Probabilities")
