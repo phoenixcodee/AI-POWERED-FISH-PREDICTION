@@ -9,27 +9,6 @@ import streamlit.components.v1 as components
 # --- CONFIG ---
 st.set_page_config(page_title="FishSnap App", page_icon="🐟", layout="centered")
 
-# --- CUSTOM BACKGROUND STYLE ---
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-image: url("https://raw.githubusercontent.com/jaydish/fishsnap-app/main/images/bg-fish.png");
-        background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
-    }
-    .block-container {
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 2rem;
-        border-radius: 12px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
 
 # --- LOAD LOTTIE ---
 @st.cache_resource
