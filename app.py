@@ -9,7 +9,6 @@ import streamlit.components.v1 as components
 # --- CONFIG ---
 st.set_page_config(page_title="FishSnap App", page_icon="🐟", layout="centered")
 
-
 # --- LOAD LOTTIE ---
 @st.cache_resource
 def load_lottieurl(url):
@@ -87,6 +86,8 @@ if page == "🏠 Welcome":
     FishSnap is your quick **first line of defense against chemical contamination**.
     """)
 
+    st.image("fish .jpg", use_column_width=True, caption="🐟 Background Image")
+
 
 # --- PREDICTION PAGE ---
 elif page == "🔬 Prediction":
@@ -114,7 +115,7 @@ elif page == "🔬 Prediction":
 
         # --- SHOW RESULTS ---
         st.success(f"🎯 Prediction: **{predicted_class}**")
-        st.markdown(f"**Confidence:** `{confidence * 100:.2f}%`")
+        st.markdown(f"**Confidence:** {confidence * 100:.2f}%")
         st.info(custom_messages[predicted_class])
 
         # --- LOTTIE DISPLAY ---
@@ -153,7 +154,7 @@ elif page == "📞 Contact Us":
 
 ### 👨‍💻 Developed By  
 **Name:** Jaydish Kennedy J  
-**Email:** [jaydishkennedy@example.com](mailto:jaydishkennedy@example.com)  
+**Email:** [jaydish@example.com](mailto:jaydish@example.com)  
 **Institution:** Department of Botany, St. Joseph’s College (Autonomous), Tiruchirappalli – 620002, Tamil Nadu, India  
 
 ---
@@ -175,3 +176,5 @@ elif page == "📞 Contact Us":
 
         if submit_button:
             st.success(f"✅ Thank you {name}, your message has been received.")
+
+chage the code for addig ackgroud image
