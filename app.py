@@ -14,7 +14,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image:url("fish.jpg");
+        background-image: url("https://raw.githubusercontent.com/jaydish/fishsnap-app/main/images/bg-fish.png");
         background-size: cover;
         background-attachment: fixed;
         background-position: center;
@@ -23,12 +23,12 @@ st.markdown(
         background-color: rgba(255, 255, 255, 0.85);
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 
 # --- LOAD LOTTIE ---
