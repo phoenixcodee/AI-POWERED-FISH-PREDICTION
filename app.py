@@ -9,6 +9,28 @@ import streamlit.components.v1 as components
 # --- CONFIG ---
 st.set_page_config(page_title="FishSnap App", page_icon="🐟", layout="centered")
 
+# --- CUSTOM BACKGROUND STYLE ---
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: 
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .block-container {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # --- LOAD LOTTIE ---
 @st.cache_resource
 def load_lottieurl(url):
@@ -86,7 +108,6 @@ if page == "🏠 Welcome":
     FishSnap is your quick **first line of defense against chemical contamination**.
     """)
 
-    st.image("https://cdn.pixabay.com/photo/2021/03/23/15/18/fish-6117672_960_720.jpg", use_column_width=True)
 
 # --- PREDICTION PAGE ---
 elif page == "🔬 Prediction":
@@ -153,7 +174,7 @@ elif page == "📞 Contact Us":
 
 ### 👨‍💻 Developed By  
 **Name:** Jaydish Kennedy J  
-**Email:** [jaydish@example.com](mailto:jaydish@example.com)  
+**Email:** [jaydishkennedy@example.com](mailto:jaydishkennedy@example.com)  
 **Institution:** Department of Botany, St. Joseph’s College (Autonomous), Tiruchirappalli – 620002, Tamil Nadu, India  
 
 ---
