@@ -14,7 +14,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-image: 
+        background-image:url("fish.jpg");
         background-size: cover;
         background-attachment: fixed;
         background-position: center;
