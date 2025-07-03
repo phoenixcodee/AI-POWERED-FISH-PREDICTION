@@ -177,4 +177,3 @@ elif page == "📞 Contact Us":
         if submit_button:
             st.success(f"✅ Thank you {name}, your message has been received.")
 
-chage the code for addig ackgroud image
