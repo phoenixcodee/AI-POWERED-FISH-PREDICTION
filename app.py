@@ -154,7 +154,7 @@ elif page == "📞 Contact Us":
 
 ### 👨‍💻 Developed By  
 **Name:** Jaydish Kennedy J  
-**Email:** [jaydish@example.com](mailto:jaydish@example.com)  
+**Email:** [jaydishkennedy@example.com](mailto:jaydishkennedy@example.com)  
 **Institution:** Department of Botany, St. Joseph’s College (Autonomous), Tiruchirappalli – 620002, Tamil Nadu, India  
 
 ---
